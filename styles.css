@@ -1,0 +1,295 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1px;
+}
+
+html, body {
+    height: 100%;
+    background-color: #38b6ff;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.whiteicon{
+    color: white;
+    font-size: 50px;
+    margin-right: 5px;
+    text-shadow: 0 2px 2px black;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    margin-top: 40px;
+}
+
+h1{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 50px;
+    color: white;
+    margin-left: 5px;
+    text-shadow: 0 2px 2px black;
+}
+
+.workspace {
+    display: flex;
+    flex:1;
+    justify-content: flex-start;
+    align-items: start;
+    margin-top: 130px;
+    overflow: auto;
+}
+
+.list{
+    height: 100%;
+    min-width: 384px;
+    padding: 0 10px;
+}
+
+/*CARD CLASS SELECTORS BELOW*/
+
+.card-list{
+    background-color: aliceblue;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px gray;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+
+.card-header {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+  
+.card-header input {
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Poppins', sans-serif;
+    color: #545454;
+    border:none;
+    background-color:transparent;
+}
+
+.card-header input:focus{
+    outline: none;
+}
+
+.card-header input::placeholder{
+    color: rgb(160, 158, 158);
+}
+  
+.card-menu {
+    background-color: transparent;
+    border: none;
+    color: #6b808c;
+    cursor: pointer;
+    font-size: 16px;
+}
+    
+.card-menu:hover {
+    color: #172b4d;
+}
+  
+.card-body {
+    display: flex; 
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    margin: 10px;
+    background-color: #d9d9d9;
+    box-shadow: 0 2px 2px gray;
+    border-radius: 20px;
+    position: relative;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.card-body textarea {
+    color: black;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    background-color:transparent;
+    word-wrap: break-word;
+    min-height: 50px;
+    overflow-y: auto;
+    resize: none;
+}
+
+.card-body textarea::-webkit-scrollbar{
+    width: 0px;
+    background-color: transparent;
+}
+
+.card-body textarea:focus{
+    outline: none;
+}
+
+.card-body textarea::placeholder{
+    color: gray;
+}
+  
+.card-footer {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+  
+.card-button {
+    background-color: transparent;
+    border: none;
+    color: #6b808c;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 5px;
+    width: 100%;
+    text-align: left;
+}
+  
+.card-button:hover {
+    color: #172b4d;
+}
+
+.card-button i,
+.card-button p {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 25px;
+}
+
+.card-button p{
+    margin-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.hover-icon{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.card-body .card-button {
+    background-color: transparent;
+    border: none;
+    color: #6b808c;
+    cursor: pointer;
+    font-size: 16px;
+    width: auto;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.card-body:hover .hover-icon {
+    opacity: 1;
+    transform: translateY(-50%) scale(0.7);
+}
+/*CARD SELECTOR END*/
+
+/*ADD LISTCARD SELECTOR BELOW*/
+
+.new-card{
+    background-color: aliceblue;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px gray;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+}
+
+.new-card-input{
+    background-color: aliceblue;
+    border-radius: 5px;
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #6b808c;
+    outline: none;
+    font-weight: bolder;
+}
+
+.new-card-add-button{
+    border-radius: 5px;
+    width: 25%;
+    height: 35px;
+    font-size: 13px;
+    background-color:#ffb703;
+    border: 0;
+    box-shadow: 0 2px 5px gray;
+    margin-top: 10px;
+    display: inline-block; 
+    margin-right: 10px; 
+    font-weight: bolder;
+    color: rgb(37, 37, 37);
+    font-weight: bolder;
+}
+
+.new-card-delete-button{
+    border: 0;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+/*ADD CARDLIST CSS SELECTORS END*/
+
+footer{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+}
+
+.footer-container{
+    width: 400px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+}
+
+footer a i{
+    font-size: 30px;
+}
+
+footer a{
+    color: white;
+}
+
+footer a:hover {
+    color: rgb(44, 44, 44);
+}  
+
+/*border constants*/
+.border{
+    border: 1px solid black;
+}
+
+.border-red{
+    border: 2px solid red;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
