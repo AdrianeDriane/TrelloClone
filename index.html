@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="styles.css"/>
         <script src="https://kit.fontawesome.com/b76da3ebe4.js" crossorigin="anonymous"></script>
         <script src="script.js" defer></script>
+        <script src="dragndrop.js" defer></script>
     </head>
     <body>
         <header>
@@ -16,7 +17,7 @@
         </header>
         <div class="workspace" id="workspace">
 
-            <div class="list">
+            <div class="list-undraggable">
                 <div class="new-card">
                     <div>
                         <input id="add-list-input" class="new-card-input" type="text" placeholder="Enter list title..."/>
@@ -24,6 +25,9 @@
                     <button id="add-list-button" class="new-card-add-button">ADD LIST</button>
                     <button id="delete-button" class="new-card-delete-button"><i class="fa-solid fa-x"></i></button>
                 </div>
+            </div>
+            <div class="dragworkspace" id="dragworkspace">
+
             </div>
             <!-- HTML REPRESENTATION OF A CARD LIST BELOW FOR EASIER JS CODE
             <div class="list">

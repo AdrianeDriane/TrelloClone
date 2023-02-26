@@ -19,11 +19,17 @@ function addNewCardList(title) {
 
     // Get access to parent div named workspace
     const workspace = document.getElementById("workspace");
-  
+
+    //Get access to parent div named dragworkspace
+    const dragworkspace = document.getElementById("dragworkspace");
+    dragworkspace.classList.add("cardlist-container");
+
     // Create group of HTML represents that represents a card-list
     const list = document.createElement("div");
     list.classList.add("list");
-  
+    list.classList.add("cardlist-draggable");
+    list.setAttribute("draggable", true);
+    
     const cardList = document.createElement("div");
     cardList.classList.add("card-list");
   
@@ -41,6 +47,8 @@ function addNewCardList(title) {
   
     const cardMenuIcon = document.createElement("i");
     cardMenuIcon.classList.add("fas", "fa-trash-alt");
+
+    const cardContainer = document.createElement("div");
   
     const cardFooter = document.createElement("div");
     cardFooter.classList.add("card-footer");
@@ -63,9 +71,10 @@ function addNewCardList(title) {
     cardButton.appendChild(cardButtonText);
   
     cardList.appendChild(cardHeader);
+    cardList.appendChild(cardContainer);
     cardList.appendChild(cardFooter);
     list.appendChild(cardList);
-    workspace.appendChild(list);
+    dragworkspace.appendChild(list);
 
     cardHeaderTitle.focus();
 
@@ -74,9 +83,7 @@ function addNewCardList(title) {
       const confirmed = window.confirm("Do you wish to delete this card?");
       if (confirmed) {
         list.remove(); //Remove entire card list
-      } else {
-        console.log("Canceled!");
-      }
+      } else {}
     });
 
     // Add click event listener to the "Add a card note" button
@@ -109,30 +116,26 @@ function addNewCardList(title) {
         cardBody.appendChild(deleteButton);
         
         //Inserts the new note/body before the footer.
-        cardList.insertBefore(cardBody, cardFooter);
+        cardContainer.appendChild(cardBody);
         noteInput.focus();
 
         /* Whenever the user inputs text, we first set the height of the textarea to auto to reset its height, and then set it to the scrollHeight of the textarea, which is the height of the content including any overflow. */
         noteInput.addEventListener('input', function(){
             noteInput.style.height = 'auto';
-            noteInput.style.height = '${textarea.scrollHeight}px';
+            noteInput.style.height = `${noteInput.scrollHeight}px`;
         });
 
         //Toggles the disabled property of the textarea element whenever we click the
         //edit button
         editButton.addEventListener("click", function() {
-            console.log("editButton clicked");
             noteInput.disabled = false;
             if (noteInput.disabled == false) {
                 noteInput.focus();
-                console.log("editButton caused noteInput to be focused");
             }
-            console.log("editButton function finished");
         });
 
 
         deleteButton.addEventListener("click", function() {
-            console.log("deleteButton clicked");
             cardBody.remove();
         });
 
@@ -142,4 +145,8 @@ function addNewCardList(title) {
             noteInput.disabled = true;
         });
     }
+
+    // To make sure that the elements are assigned to their classes before we run the dragndrop file
+    dragndropCardList();
+    //dragndropNoteCard();
 }

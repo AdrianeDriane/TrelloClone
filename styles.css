@@ -50,13 +50,28 @@ h1{
     overflow: auto;
 }
 
+.dragworkspace{
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    overflow: auto;
+    height: 100%;
+    width: auto;
+}
+
 .list{
+    height: auto;
+    min-width: 384px;
+    padding: 0 10px;
+}
+
+.list-undraggable{
     height: 100%;
     min-width: 384px;
     padding: 0 10px;
 }
 
-/*CARD CLASS SELECTORS BELOW*/
+/*<----------------------CARD CLASS SELECTORS BELOW---------------------->*/
 
 .card-list{
     background-color: aliceblue;
@@ -202,9 +217,9 @@ h1{
     opacity: 1;
     transform: translateY(-50%) scale(0.7);
 }
-/*CARD SELECTOR END*/
+/*<----------------------CARD SELECTOR END---------------------->*/
 
-/*ADD LISTCARD SELECTOR BELOW*/
+/*<----------------------ADD LISTCARD SELECTOR BELOW---------------------->*/
 
 .new-card{
     background-color: aliceblue;
@@ -230,7 +245,7 @@ h1{
 
 .new-card-add-button{
     border-radius: 5px;
-    width: 25%;
+    width: auto;
     height: 35px;
     font-size: 13px;
     background-color:#ffb703;
@@ -242,6 +257,7 @@ h1{
     font-weight: bolder;
     color: rgb(37, 37, 37);
     font-weight: bolder;
+    padding: 10px;
 }
 
 .new-card-delete-button{
@@ -250,7 +266,7 @@ h1{
     font-weight: bolder;
 }
 
-/*ADD CARDLIST CSS SELECTORS END*/
+/*<----------------------ADD CARDLIST CSS SELECTORS END---------------------->*/
 
 footer{
     width: 100%;
@@ -282,6 +298,21 @@ footer a:hover {
     color: rgb(44, 44, 44);
 }  
 
+/*<----------------------DRAG AND DROP CSS SELECTORS BELOW---------------------->*/
+
+.cardlist-container{
+    /*Empty*/
+}
+
+.cardlist-draggable{
+    cursor: move;
+}
+
+.cardlist-draggable.dragging{
+    opacity: 100%;
+}
+
+/*<----------------------DRAG AND DROP CSS SELECTORS END---------------------->*/
 /*border constants*/
 .border{
     border: 1px solid black;
