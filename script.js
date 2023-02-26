@@ -1,6 +1,5 @@
 const newListButton = document.getElementById("add-list-button");
 const newListInput = document.getElementById("add-list-input");
-
 newListButton.addEventListener("click", function(){
     addNewCardList(newListInput.value);
 });
@@ -16,19 +15,12 @@ function addNewCardList(title) {
         addListInputValue.value = "";
     });
 
-
-    // Get access to parent div named workspace
-    const workspace = document.getElementById("workspace");
-
     //Get access to parent div named dragworkspace
     const dragworkspace = document.getElementById("dragworkspace");
-    dragworkspace.classList.add("cardlist-container");
 
     // Create group of HTML represents that represents a card-list
     const list = document.createElement("div");
     list.classList.add("list");
-    list.classList.add("cardlist-draggable");
-    list.setAttribute("draggable", true);
     
     const cardList = document.createElement("div");
     cardList.classList.add("card-list");
@@ -49,6 +41,7 @@ function addNewCardList(title) {
     cardMenuIcon.classList.add("fas", "fa-trash-alt");
 
     const cardContainer = document.createElement("div");
+    cardContainer.classList.add("notecard-container");//
   
     const cardFooter = document.createElement("div");
     cardFooter.classList.add("card-footer");
@@ -95,6 +88,8 @@ function addNewCardList(title) {
         // Creates a new group of HTML elements that represents the card body/notes
         const cardBody = document.createElement("div");
         cardBody.classList.add("card-body");
+        cardBody.classList.add("notecard-draggable");//
+        cardBody.setAttribute("draggable", true);//
         const noteInput = document.createElement("textarea");
         noteInput.type = "text";
         noteInput.id = "my-note-textfield";
@@ -119,7 +114,9 @@ function addNewCardList(title) {
         cardContainer.appendChild(cardBody);
         noteInput.focus();
 
-        /* Whenever the user inputs text, we first set the height of the textarea to auto to reset its height, and then set it to the scrollHeight of the textarea, which is the height of the content including any overflow. */
+        /* Whenever the user inputs text, we first set the height of the textarea to auto to
+         reset its height, and then set it to the scrollHeight of the textarea, which is 
+         the height of the content including any overflow. */
         noteInput.addEventListener('input', function(){
             noteInput.style.height = 'auto';
             noteInput.style.height = `${noteInput.scrollHeight}px`;
@@ -134,7 +131,6 @@ function addNewCardList(title) {
             }
         });
 
-
         deleteButton.addEventListener("click", function() {
             cardBody.remove();
         });
@@ -144,9 +140,11 @@ function addNewCardList(title) {
         noteInput.addEventListener("blur", function(){
             noteInput.disabled = true;
         });
+
+        // To make sure that the elements are assigned to their classes before we run the notedragndrop file
+        dragndropNoteCard();
     }
 
-    // To make sure that the elements are assigned to their classes before we run the dragndrop file
-    dragndropCardList();
-    //dragndropNoteCard();
+    // To make sure that the elements are assigned to their classes before we run the notedragndrop file
+    dragndropNoteCard();
 }

@@ -299,19 +299,21 @@ footer a:hover {
 }  
 
 /*<----------------------DRAG AND DROP CSS SELECTORS BELOW---------------------->*/
-
-.cardlist-container{
-    /*Empty*/
-}
-
-.cardlist-draggable{
-    cursor: move;
-}
-
-.cardlist-draggable.dragging{
+.notecard-container{
     opacity: 100%;
+    min-height: 20px;
 }
 
+.notecard-draggable{
+    cursor: grab;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.notecard-dragging{
+    transform: rotate(4deg);
+    opacity: 100%;
+    cursor: grabbing;
+}
 /*<----------------------DRAG AND DROP CSS SELECTORS END---------------------->*/
 /*border constants*/
 .border{
