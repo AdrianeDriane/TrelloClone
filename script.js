@@ -75,7 +75,6 @@ function addNewCardList(title) {
     const confirmed = window.confirm("Do you wish to delete this card?");
     if (confirmed) {
       list.remove(); //Removes entire card list
-    } else {
     }
   });
 
