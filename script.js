@@ -5,7 +5,6 @@ newListButton.addEventListener("click", function () {
 });
 
 function addNewCardList(title) {
-  // Sets input value to "" whenever new card is generated
   const addListInputValue = document.getElementById("add-list-input");
   addListInputValue.value = "";
 
@@ -14,10 +13,9 @@ function addNewCardList(title) {
     addListInputValue.value = "";
   });
 
-  //Get access to parent div named dragworkspace
   const dragworkspace = document.getElementById("dragworkspace");
 
-  // Create group of HTML represents that represents a card-list
+  // CARD-LIST
   const list = document.createElement("div");
   list.classList.add("list");
 
@@ -70,21 +68,16 @@ function addNewCardList(title) {
 
   cardHeaderTitle.focus();
 
-  // Add event listener to the "delete card list" button
   cardMenuIcon.addEventListener("click", function () {
     const confirmed = window.confirm("Do you wish to delete this card?");
     if (confirmed) {
-      list.remove(); //Removes entire card list
+      list.remove();
     }
   });
 
-  // Add click event listener to the "Add a card note" button
   cardButton.addEventListener("click", newCardBody);
 
-  //A function that adds a body/note in between the cardHeader and cardFooter
-  //Declared this function inside because this will only be used inside this function
   function newCardBody() {
-    // Creates a new group of HTML elements that represents the card body/notes
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body");
     cardBody.classList.add("notecard-draggable");
@@ -113,36 +106,36 @@ function addNewCardList(title) {
     cardBody.appendChild(editButton);
     cardBody.appendChild(deleteButton);
 
-    //Inserts the new note/body before the footer.
     cardContainer.appendChild(cardBody);
     noteInput.focus();
 
-    /* Whenever the user inputs text, we first set the height of the textarea to auto to
-         reset its height, and then set it to the scrollHeight of the textarea, which is 
-         the height of the content including any overflow. */
-    noteInput.addEventListener("input", function () {
-      noteInput.style.height = "auto";
-      noteInput.style.height = `${noteInput.scrollHeight}px`;
+    noteInput.addEventListener("input", hideScrollbar);
+
+    editButton.addEventListener("click", enableNoteInput);
+
+    deleteButton.addEventListener("click", () => {
+      cardBody.remove();
     });
 
-    //Toggles the disabled property of the textarea element whenever we click the
-    //edit button
-    editButton.addEventListener("click", function () {
+    noteInput.addEventListener("blur", disableNoteInput);
+
+    function hideScrollbar() {
+      noteInput.style.height = "auto";
+      noteInput.style.height = `${noteInput.scrollHeight}px`;
+    }
+
+    function enableNoteInput() {
+      console.log("enableNoteInput");
       noteInput.disabled = false;
       if (noteInput.disabled == false) {
         noteInput.focus();
       }
-    });
+    }
 
-    deleteButton.addEventListener("click", function () {
-      cardBody.remove();
-    });
-
-    //Toggles the disabled property of the textarea element into true
-    //whenever the focus is not on the textarea element anymore
-    noteInput.addEventListener("blur", function () {
+    function disableNoteInput() {
+      console.log("hideScrollBar");
       noteInput.disabled = true;
-    });
+    }
 
     // To make sure that the elements are assigned to their classes before we run the notedragndrop file
     dragndropNoteCard();
